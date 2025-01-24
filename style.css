@@ -12,12 +12,11 @@ body {
     background-color: rgb(192, 67, 67);
     color: white;
     overflow: hidden;
-    font-size: 50px;
 }
 
 main {
-    width: 500px;
-    height: 750px;
+    width: 400px;
+    height: 550px;
     background-color: rgb(25, 25, 25);
     border: solid 5px black;
     border-radius: 50px;
@@ -26,13 +25,16 @@ main {
 .visor {
     display: flex;
     justify-content: center;
+    align-items: center;
     margin: auto;
     margin-top: 40px;
-    width: 80%;
-    padding: 10px 0px;
+    width: 285px;
+    height: 55px;
     background-color: gray;
     border: solid 5px rgb(96, 96, 96);
     border-radius: 20px;
+    font-size: 40px;
+    font-weight: 700;
 }
 
 .numeros-e-operadores {
@@ -44,12 +46,15 @@ main {
 }
 
 .container {
+    display: flex;
+    justify-content: center;
     margin-bottom: 10px;
+    gap: 10px;
 }
 
 .slider {
-    width: 310px;
-    height: 94px;
+    width: 130px;
+    height: 55px;
     background-color: rgb(192, 67, 67);
     border: solid 5px #bbb;
     border-radius: 50px;
@@ -61,25 +66,26 @@ main {
 label > .slider::after {
     position: absolute;
     top: 50%;
-    right: 50px;
+    right: 20px;
     transform: translate(0, -50%);
     font-weight: bold;
     z-index: 1;
     transition: all 500ms ease-in-out;
     content: "OFF";
     color: white;
+    font-size: 24px;
 }
 
 .button {
     background-color: #ccc;
     border: none;
-    width: 86px;
-    height: 86px;
+    width: 49px;
+    height: 49px;
     border-radius: 50%;
     pointer-events: none;
     position: absolute;
-    top: 4px;
-    left: 4px;
+    top: 3px;
+    left: 3px;
     transition: all 500ms ease-in-out;
     box-shadow: inset -0.5rem 0.5rem 0.5rem rgba(0, 0, 0, 0.2);
 }
@@ -95,15 +101,21 @@ label > .slider::after {
 }
 
 .toggle-input:checked ~ .slider > .button {
-    left: 220px;
+    left: 78px;
     box-shadow: inset 0.5rem 0.5rem 0.5rem rgba(0, 0, 0, 0.2);
     background: #e0e2db;
 }
 
 label > .toggle-input:checked ~ .slider:after {
-left: 50px;
+left: 25px;
 color: #f1f1ff;
 content: "ON";
+font-size: 24px;
+}
+
+.container .numero {
+    font-size: 24px;
+
 }
 
 .digitos {
@@ -121,7 +133,8 @@ content: "ON";
 }
 
 .numero {
-    padding: 30px 36px;
+    width: 65px;
+    height: 65px;
     font-size: 30px;
     border-radius: 50%;
     background-color: gray;
@@ -132,8 +145,8 @@ content: "ON";
 }
 
 .numero-0 {
-    width: 99%;
-    padding: 30px 36px;
+    width: 215px;
+    height: 65px;
     font-size: 30px;
     border-radius: 50px;
     background-color: gray;
@@ -151,7 +164,8 @@ aside {
 }
 
 .operador {
-    padding: 30px 36px;
+    width: 65px;
+    height: 65px;
     font-size: 30px;
     border-radius: 50%;
     background-color: rgb(203, 138, 16);
