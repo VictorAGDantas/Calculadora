@@ -51,3 +51,10 @@ elementos.btnLigarDesligar.addEventListener('change', () => {
 //Depois perguntar, porque não posso utilizar o readonly
 
 //Perguntar depois se é melhor criar uma class desativo e ter a interação com classList.add('')
+
+
+elementos.numeros.forEach(numero => {
+    numero.addEventListener('click', () => {
+        console.log(numero)
+    })
+})
