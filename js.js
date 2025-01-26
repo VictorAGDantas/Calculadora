@@ -55,6 +55,7 @@ elementos.btnLigarDesligar.addEventListener('change', () => {
 
 elementos.numeros.forEach(numero => {
     numero.addEventListener('click', () => {
-        console.log(numero)
+        let valorNumero = numero.getAttribute('data-numero')
+        console.log(valorNumero)
     })
 })

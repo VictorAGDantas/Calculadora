@@ -148,17 +148,9 @@ font-size: 24px;
     opacity: 0.7;
 }
 
-.numero-0 {
+.numeros .numero-0 {
     width: 215px;
-    height: 65px;
-    font-size: 30px;
     border-radius: 50px;
-    background-color: gray;
-    border: solid 5px rgb(96, 96, 96);
-    color: white;
-    font-weight: bold;
-    pointer-events: none;
-    opacity: 0.7;
 }
 
 
