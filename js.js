@@ -26,7 +26,7 @@ elementos.btnLigarDesligar.addEventListener('change', () => {
             operador.style.opacity = '1';
         })
 
-
+        elementos.visorCalc.innerText = ""
 
     } else {
         elementos.fundoTela.style.backgroundColor = 'rgb(192, 67, 67)';
@@ -44,6 +44,8 @@ elementos.btnLigarDesligar.addEventListener('change', () => {
             operador.style.pointerEvents = 'none';
             operador.style.opacity = '0.7';
         })
+
+        elementos.visorCalc.innerText = "7 + 4 = 11"
     }
 })
 
@@ -57,5 +59,12 @@ elementos.numeros.forEach(numero => {
     numero.addEventListener('click', () => {
         let valorNumero = numero.getAttribute('data-numero')
         console.log(valorNumero)
+    })
+})
+
+elementos.operadores.forEach(operador => {
+    operador.addEventListener('click', () => {
+        let valorOperador = operador.getAttribute('data-operador');
+        console.log(valorOperador)
     })
 })
