@@ -5,10 +5,13 @@ const elementos = {
     numeros: document.querySelectorAll('.numero'),
     numerozero: document.querySelector('.numero-0'),
     operadores: document.querySelectorAll('.operador'),
+    botaoIgualdade: document.getElementById('botao-igualdade')
 }
 
 let variaveis = {
-    valoresVisor: ''
+    valoresVisor: '',
+    valoresSeparados: [],
+    valorUltimaOperacao: '',
 }
 
 elementos.btnLigarDesligar.addEventListener('change', () => {
@@ -65,6 +68,20 @@ elementos.numeros.forEach(numero => {
         variaveis.valoresVisor += valorNumero 
         elementos.visorCalc.innerText = variaveis.valoresVisor;
     })
+})
+
+elementos.botaoIgualdade.addEventListener('click', () => {
+    console.log('vai 2')
+    variaveis.valoresSeparados = variaveis.valoresVisor.split(' ')
+    console.log(variaveis.valoresSeparados)
+
+    if(variaveis.valoresSeparados.length != 3) {
+        variaveis.valoresSeparados.unshift(variaveis.valorUltimaOperacao);
+    }
+
+    console.log(variaveis.valoresSeparados[0])
+
+    operacao(variaveis.valoresSeparados[0], variaveis.valoresSeparados[1], valoresSeparados[2]);
 })
 
 elementos.operadores.forEach(operador => {
