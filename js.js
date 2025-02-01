@@ -70,20 +70,6 @@ elementos.numeros.forEach(numero => {
     })
 })
 
-elementos.botaoIgualdade.addEventListener('click', () => {
-    console.log('vai 2')
-    variaveis.valoresSeparados = variaveis.valoresVisor.split(' ')
-    console.log(variaveis.valoresSeparados)
-
-    if(variaveis.valoresSeparados.length != 3) {
-        variaveis.valoresSeparados.unshift(variaveis.valorUltimaOperacao);
-    }
-
-    console.log(variaveis.valoresSeparados[0])
-
-    operacao(variaveis.valoresSeparados[0], variaveis.valoresSeparados[1], valoresSeparados[2]);
-})
-
 elementos.operadores.forEach(operador => {
     operador.addEventListener('click', () => {
         let valorOperador = operador.getAttribute('data-operador');
@@ -91,4 +77,40 @@ elementos.operadores.forEach(operador => {
         variaveis.valoresVisor += valorOperador
         elementos.visorCalc.innerText = variaveis.valoresVisor;
     })
+})
+
+function operacao (num1, operador, num2) {
+    num1 = parseInt(num1);
+    num2 = parseInt(num2);
+    let funcao = ''
+    operador = operador.trim();
+    
+    if (operador == "+") {
+        funcao = num1 + num2
+    }else if(operador == "-") {
+        funcao = num1 - num2
+    }else if (operador == "x") {
+        funcao = num1 * num2
+    }else if (operador == "÷"){
+        if (num1 == 0 || num2 == 0) {
+            elementos.visorCalc.innerText = 'Erro: Divisão por 0'  
+        } else {
+            funcao = num1 / num2
+        }
+    }
+
+    variaveis.valoresVisor += funcao
+    elementos.visorCalc.innerText = variaveis.valoresVisor
+}
+
+elementos.botaoIgualdade.addEventListener('click', () => {
+    console.log('vai 2')
+    variaveis.valoresSeparados = variaveis.valoresVisor.split(' ')
+    console.log(variaveis.valoresSeparados)
+
+    if(variaveis.valoresSeparados.length <= 2) {
+        variaveis.valoresSeparados.unshift(variaveis.valorUltimaOperacao);
+    }
+
+    operacao(variaveis.valoresSeparados[0], variaveis.valoresSeparados[1], variaveis.valoresSeparados[2]);
 })
