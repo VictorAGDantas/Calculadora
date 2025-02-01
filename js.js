@@ -5,7 +5,10 @@ const elementos = {
     numeros: document.querySelectorAll('.numero'),
     numerozero: document.querySelector('.numero-0'),
     operadores: document.querySelectorAll('.operador'),
+}
 
+let variaveis = {
+    valoresVisor: ''
 }
 
 elementos.btnLigarDesligar.addEventListener('change', () => {
@@ -59,6 +62,8 @@ elementos.numeros.forEach(numero => {
     numero.addEventListener('click', () => {
         let valorNumero = numero.getAttribute('data-numero')
         console.log(valorNumero)
+        variaveis.valoresVisor += valorNumero 
+        elementos.visorCalc.innerText = variaveis.valoresVisor;
     })
 })
 
@@ -66,5 +71,7 @@ elementos.operadores.forEach(operador => {
     operador.addEventListener('click', () => {
         let valorOperador = operador.getAttribute('data-operador');
         console.log(valorOperador)
+        variaveis.valoresVisor += valorOperador
+        elementos.visorCalc.innerText = variaveis.valoresVisor;
     })
 })
