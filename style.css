@@ -174,3 +174,17 @@ aside {
     pointer-events: none;
     opacity: 0.7;
 }
+
+.operador-igualdade {
+    width: 65px;
+    height: 65px;
+    font-size: 30px;
+    border-radius: 50%;
+    background-color: rgb(203, 138, 16);
+    border: solid 5px rgb(179, 119, 9);
+    color: white;
+    font-weight: bold;
+    gap: 10px;
+    pointer-events: none;
+    opacity: 0.7;
+}

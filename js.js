@@ -32,6 +32,9 @@ elementos.btnLigarDesligar.addEventListener('change', () => {
             operador.style.opacity = '1';
         })
 
+        elementos.botaoIgualdade.style.pointerEvents = 'auto'
+        elementos.botaoIgualdade.style.opacity = '1'
+
         elementos.visorCalc.innerText = ""
 
     } else {
@@ -51,6 +54,9 @@ elementos.btnLigarDesligar.addEventListener('change', () => {
             operador.style.opacity = '0.7';
         })
 
+        elementos.botaoIgualdade.style.pointerEvents = 'none'
+        elementos.botaoIgualdade.style.opacity = '0.7'
+
         elementos.visorCalc.innerText = "7 + 4 = 11"
     }
 })
@@ -65,7 +71,7 @@ elementos.numeros.forEach(numero => {
     numero.addEventListener('click', () => {
         let valorNumero = numero.getAttribute('data-numero')
         console.log(valorNumero)
-        variaveis.valoresVisor += valorNumero 
+        variaveis.valoresVisor += valorNumero      
         elementos.visorCalc.innerText = variaveis.valoresVisor;
     })
 })
@@ -74,7 +80,13 @@ elementos.operadores.forEach(operador => {
     operador.addEventListener('click', () => {
         let valorOperador = operador.getAttribute('data-operador');
         console.log(valorOperador)
+        
+        if(variaveis.valoresSeparados.length == 0 && variaveis.valorUltimaOperacao != 0) {
+            variaveis.valoresVisor = variaveis.valorUltimaOperacao
+        }
+        
         variaveis.valoresVisor += valorOperador
+        
         elementos.visorCalc.innerText = variaveis.valoresVisor;
     })
 })
@@ -101,16 +113,18 @@ function operacao (num1, operador, num2) {
 
     variaveis.valoresVisor += funcao
     elementos.visorCalc.innerText = variaveis.valoresVisor
-}
+    variaveis.valorUltimaOperacao = funcao
+
+    variaveis.valoresSeparados.splice(0,4)
+    console.log(variaveis.valoresSeparados)
+}   
 
 elementos.botaoIgualdade.addEventListener('click', () => {
     console.log('vai 2')
     variaveis.valoresSeparados = variaveis.valoresVisor.split(' ')
     console.log(variaveis.valoresSeparados)
 
-    if(variaveis.valoresSeparados.length <= 2) {
-        variaveis.valoresSeparados.unshift(variaveis.valorUltimaOperacao);
-    }
+    elementos.visorCalc.innerText = variaveis.valoresVisor += " = "
 
     operacao(variaveis.valoresSeparados[0], variaveis.valoresSeparados[1], variaveis.valoresSeparados[2]);
 })
