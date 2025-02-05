@@ -37,6 +37,36 @@ elementos.btnLigarDesligar.addEventListener('change', () => {
 
         elementos.visorCalc.innerText = ""
 
+        window.addEventListener('keypress', function (evento) {
+            tecla = evento.key
+            teclaNumero = parseInt(evento.key)
+            console.log(tecla)
+            botaoEncontrado = null;
+
+            if(!isNaN(teclaNumero)){
+                botaoEncontrado = document.querySelector(`[data-numero="${tecla}"]`)
+                botaoEncontrado.click();
+
+            } else {
+                if(tecla == '+') {
+                    tecla = ' + '
+                }else if(tecla == '-') {
+                    tecla = ' - '
+                } else if (tecla == '*') {
+                    tecla = ' x '
+                } else if (tecla == '/') {
+                    tecla = ' ÷ '
+                } else if (tecla == "Enter"){
+                    tecla = ' = '
+                }
+            
+                botaoEncontrado = document.querySelector(`[data-operador="${tecla}"]`)
+                botaoEncontrado.click();
+            }
+        })
+
+        
+
     } else {
         elementos.fundoTela.style.backgroundColor = 'rgb(192, 67, 67)';
         elementos.visorCalc.style.backgroundColor = 'gray';
