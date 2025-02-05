@@ -71,7 +71,13 @@ elementos.numeros.forEach(numero => {
     numero.addEventListener('click', () => {
         let valorNumero = numero.getAttribute('data-numero')
         console.log(valorNumero)
-        variaveis.valoresVisor += valorNumero      
+
+        if(variaveis.valoresVisor == variaveis.valorUltimaOperacao) {
+            variaveis.valoresVisor = '';
+        }
+        
+        variaveis.valoresVisor += valorNumero
+
         elementos.visorCalc.innerText = variaveis.valoresVisor;
     })
 })
@@ -81,7 +87,7 @@ elementos.operadores.forEach(operador => {
         let valorOperador = operador.getAttribute('data-operador');
         console.log(valorOperador)
         
-        if(variaveis.valoresSeparados.length == 0 && variaveis.valorUltimaOperacao != 0) {
+        if(variaveis.valoresVisor === '' && variaveis.valorUltimaOperacao != '') {
             variaveis.valoresVisor = variaveis.valorUltimaOperacao
         }
         
@@ -114,6 +120,7 @@ function operacao (num1, operador, num2) {
     variaveis.valoresVisor += funcao
     elementos.visorCalc.innerText = variaveis.valoresVisor
     variaveis.valorUltimaOperacao = funcao
+    variaveis.valoresVisor = ''
 
     variaveis.valoresSeparados.splice(0,4)
     console.log(variaveis.valoresSeparados)
