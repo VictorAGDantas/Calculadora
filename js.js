@@ -158,7 +158,7 @@ function operacao (num1, operador, num2) {
     variaveis.valorUltimaOperacao = funcao
     variaveis.valoresVisor = ''
 
-    variaveis.valoresSeparados.splice(0,4)
+    variaveis.valoresSeparados.splice(0, 3)
     console.log(variaveis.valoresSeparados)
 }   
 
@@ -174,6 +174,16 @@ elementos.botaoIgualdade.addEventListener('click', () => {
 })
 
 elementos.botaoApagar.addEventListener('click', () => {
-    variaveis.valoresVisor = variaveis.valoresVisor.slice(0, -1);
+    let visorNormalizado = variaveis.valoresVisor.trim(); 
+    let ultimaOperacaoNormalizada = variaveis.valorUltimaOperacao.toString().trim();  
+
+    if (visorNormalizado === ultimaOperacaoNormalizada) {
+        variaveis.valoresVisor = "";
+    } else if (variaveis.valoresVisor.slice(-1) == " ") {
+        variaveis.valoresVisor = variaveis.valoresVisor.slice(0, -3);
+    } else {
+        variaveis.valoresVisor = variaveis.valoresVisor.slice(0, -1);
+    }
+
     elementos.visorCalc.innerText = variaveis.valoresVisor
 })
