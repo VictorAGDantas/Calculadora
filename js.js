@@ -42,7 +42,7 @@ elementos.btnLigarDesligar.addEventListener('change', () => {
 
         elementos.visorCalc.innerText = ""
 
-        window.addEventListener('keypress', function (evento) {
+        window.addEventListener('keydown', function (evento) {
             tecla = evento.key
             teclaNumero = parseInt(evento.key)
             console.log(tecla)
@@ -51,6 +51,9 @@ elementos.btnLigarDesligar.addEventListener('change', () => {
             if(!isNaN(teclaNumero)){
                 botaoEncontrado = document.querySelector(`[data-numero="${tecla}"]`)
                 botaoEncontrado.click();
+
+            }else if (tecla == "Backspace") {
+                elementos.botaoApagar.click();
 
             } else {
                 if(tecla == '+') {
