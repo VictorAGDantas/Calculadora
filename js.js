@@ -5,7 +5,9 @@ const elementos = {
     numeros: document.querySelectorAll('.numero'),
     numerozero: document.querySelector('.numero-0'),
     operadores: document.querySelectorAll('.operador'),
-    botaoIgualdade: document.getElementById('botao-igualdade')
+    botaoIgualdade: document.getElementById('botao-igualdade'),
+    botaoApagar: document.getElementById('botao-apagar'),
+
 }
 
 let variaveis = {
@@ -34,6 +36,9 @@ elementos.btnLigarDesligar.addEventListener('change', () => {
 
         elementos.botaoIgualdade.style.pointerEvents = 'auto'
         elementos.botaoIgualdade.style.opacity = '1'
+
+        elementos.botaoApagar.style.pointerEvents= "auto"
+        elementos.botaoApagar.style.opacity = "1"
 
         elementos.visorCalc.innerText = ""
 
@@ -65,8 +70,6 @@ elementos.btnLigarDesligar.addEventListener('change', () => {
             }
         })
 
-        
-
     } else {
         elementos.fundoTela.style.backgroundColor = 'rgb(192, 67, 67)';
         elementos.visorCalc.style.backgroundColor = 'gray';
@@ -86,6 +89,9 @@ elementos.btnLigarDesligar.addEventListener('change', () => {
 
         elementos.botaoIgualdade.style.pointerEvents = 'none'
         elementos.botaoIgualdade.style.opacity = '0.7'
+
+        elementos.botaoApagar.style.pointerEvents = '0.7'
+        elementos.botaoApagar.style.opacity = '0.7'
 
         elementos.visorCalc.innerText = "7 + 4 = 11"
     }
@@ -158,10 +164,16 @@ function operacao (num1, operador, num2) {
 
 elementos.botaoIgualdade.addEventListener('click', () => {
     console.log('vai 2')
-    variaveis.valoresSeparados = variaveis.valoresVisor.split(' ')
+    variaveis.valoresSeparados = variaveis.valoresVisor.split(' ').filter(valor => valor !== '');
     console.log(variaveis.valoresSeparados)
 
     elementos.visorCalc.innerText = variaveis.valoresVisor += " = "
 
     operacao(variaveis.valoresSeparados[0], variaveis.valoresSeparados[1], variaveis.valoresSeparados[2]);
+
+})
+
+elementos.botaoApagar.addEventListener('click', () => {
+    variaveis.valoresVisor = variaveis.valoresVisor.slice(0, -1);
+    elementos.visorCalc.innerText = variaveis.valoresVisor
 })
