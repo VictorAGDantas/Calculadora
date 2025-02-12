@@ -7,6 +7,7 @@ const elementos = {
     operadores: document.querySelectorAll('.operador'),
     botaoIgualdade: document.getElementById('botao-igualdade'),
     botaoApagar: document.getElementById('botao-apagar'),
+    todosBotoes: document.querySelectorAll('button'),
 
 }
 
@@ -189,4 +190,14 @@ elementos.botaoApagar.addEventListener('click', () => {
     }
 
     elementos.visorCalc.innerText = variaveis.valoresVisor
+})
+
+elementos.todosBotoes.forEach(botao => {
+    botao.addEventListener('click', () => {
+        botao.classList.add('hover')
+
+    setTimeout(() => {
+        botao.classList.remove('hover')
+    }, 200)
+    })
 })

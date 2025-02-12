@@ -202,3 +202,8 @@ aside {
     pointer-events: none;
     opacity: 0.7;
 }
+
+.hover {
+    background-color: green;
+    border: solid 5px rgb(6, 65, 6);
+}
