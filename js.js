@@ -43,36 +43,8 @@ elementos.btnLigarDesligar.addEventListener('change', () => {
 
         elementos.visorCalc.innerText = ""
 
-        window.addEventListener('keydown', function (evento) {
-            tecla = evento.key
-            teclaNumero = parseInt(evento.key)
-            console.log(tecla)
-            botaoEncontrado = null;
-
-            if(!isNaN(teclaNumero)){
-                botaoEncontrado = document.querySelector(`[data-numero="${tecla}"]`)
-                botaoEncontrado.click();
-
-            }else if (tecla == "Backspace") {
-                elementos.botaoApagar.click();
-
-            } else {
-                if(tecla == '+') {
-                    tecla = ' + '
-                }else if(tecla == '-') {
-                    tecla = ' - '
-                } else if (tecla == '*') {
-                    tecla = ' x '
-                } else if (tecla == '/') {
-                    tecla = ' ÷ '
-                } else if (tecla == "Enter"){
-                    tecla = ' = '
-                }
-            
-                botaoEncontrado = document.querySelector(`[data-operador="${tecla}"]`)
-                botaoEncontrado.click();
-            }
-        })
+        window.removeEventListener('keydown', teclaTeclado);
+        window.addEventListener('keydown', teclaTeclado);
 
     } else {
         elementos.fundoTela.style.backgroundColor = 'rgb(192, 67, 67)';
@@ -102,6 +74,8 @@ elementos.btnLigarDesligar.addEventListener('change', () => {
         variaveis.valorUltimaOperacao = ''
 
         elementos.visorCalc.innerText = "Calculadora"
+
+        window.removeEventListener('keydown', teclaTeclado);
     }
 })
 
@@ -110,6 +84,37 @@ elementos.btnLigarDesligar.addEventListener('change', () => {
 
 //Perguntar depois se é melhor criar uma class desativo e ter a interação com classList.add('')
 
+
+function teclaTeclado (evento) {
+    tecla = evento.key
+    teclaNumero = parseInt(evento.key)
+    console.log(tecla)
+    botaoEncontrado = null;
+
+    if(!isNaN(teclaNumero)){
+        botaoEncontrado = document.querySelector(`[data-numero="${tecla}"]`)
+        botaoEncontrado.click();
+
+    }else if (tecla == "Backspace") {
+        elementos.botaoApagar.click();
+
+    } else {
+        if(tecla == '+') {
+            tecla = ' + '
+        }else if(tecla == '-') {
+            tecla = ' - '
+        } else if (tecla == '*') {
+            tecla = ' x '
+        } else if (tecla == '/') {
+            tecla = ' ÷ '
+        } else if (tecla == "Enter"){
+            tecla = ' = '
+        }
+    
+        botaoEncontrado = document.querySelector(`[data-operador="${tecla}"]`)
+        botaoEncontrado.click();
+    }
+}
 
 elementos.numeros.forEach(numero => {
     numero.addEventListener('click', () => {
