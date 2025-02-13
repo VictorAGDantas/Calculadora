@@ -97,7 +97,11 @@ elementos.btnLigarDesligar.addEventListener('change', () => {
         elementos.botaoApagar.style.pointerEvents = '0.7'
         elementos.botaoApagar.style.opacity = '0.7'
 
-        elementos.visorCalc.innerText = "7 + 4 = 11"
+        variaveis.valoresVisor = ''
+        variaveis.valoresSeparados = []
+        variaveis.valorUltimaOperacao = ''
+
+        elementos.visorCalc.innerText = "Calculadora"
     }
 })
 
