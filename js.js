@@ -80,11 +80,6 @@ elementos.btnLigarDesligar.addEventListener('change', () => {
 })
 
 
-//Depois perguntar, porque não posso utilizar o readonly
-
-//Perguntar depois se é melhor criar uma class desativo e ter a interação com classList.add('')
-
-
 function teclaTeclado (evento) {
     tecla = evento.key
     teclaNumero = parseInt(evento.key)
@@ -176,7 +171,6 @@ function operacao (num1, operador, num2) {
 }   
 
 elementos.botaoIgualdade.addEventListener('click', () => {
-    console.log('vai 2')
     variaveis.valoresSeparados = variaveis.valoresVisor.split(' ').filter(valor => valor !== '');
     console.log(variaveis.valoresSeparados)
 
